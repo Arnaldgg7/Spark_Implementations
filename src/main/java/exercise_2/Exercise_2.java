@@ -13,7 +13,7 @@ public class Exercise_2 {
         // parallelization of the same tasks that apply to these first Transformations and the defined
         // final Action, which are the same for both 3 files.
 
-        Tuple2<Double, String> report_2015 = spark.textFile("src/main/resources/2015_long.csv")
+        Tuple2<Double, String> report_2015 = spark.textFile("src/main/resources/2015.csv")
                 // We perform 2 predicates within the same filter in order to save 1 additional Transformation,
                 // so we achieve higher efficiency because of the smaller amount of data that will result from
                 // this filter (we are pushing down the Selections). That is, there is less potential data
@@ -33,7 +33,7 @@ public class Exercise_2 {
                 // Happiness Score for the year file we are reading from:
                 .sortByKey(false).first();
 
-        Tuple2<Double, String> report_2016 = spark.textFile("src/main/resources/2016_long.csv")
+        Tuple2<Double, String> report_2016 = spark.textFile("src/main/resources/2016.csv")
                 // Same rationale as the above same file operations:
                 .filter(t -> !t.contains("Country")&&t.contains("Europe"))
                 // Same rationale as the above same file operations:
@@ -42,7 +42,7 @@ public class Exercise_2 {
                 // Same rationale as the above same file operations:
                 .sortByKey(false).first();
 
-        Tuple2<Double, String> report_2017 = spark.textFile("src/main/resources/2017_long.csv")
+        Tuple2<Double, String> report_2017 = spark.textFile("src/main/resources/2017.csv")
                 // Same rationale as the above same file operations:
                 .filter(t -> !t.contains("Country")&&t.contains("Europe"))
                 // Same rationale as the above same file operations:
